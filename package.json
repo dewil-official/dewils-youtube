@@ -1,0 +1,27 @@
+{
+  "name": "dewils-youtube",
+  "version": "0.0.6",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "css-build": "node-sass sass/ --o css/",
+    "electron-start": "electron .",
+    "start": "npm run css-build && npm run electron-start"
+  },
+  "keywords": [
+    "DeWil",
+    "YouTube",
+    "Playlist",
+    "Watch",
+    "Fast"
+  ],
+  "author": "DeWil",
+  "devDependencies": {
+    "electron": "^4.0.2",
+    "bulma": "^0.7.2",
+    "node-sass": "^4.11.0"
+  },
+  "dependencies": {
+    "electron-store": "^2.0.0"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<!-- Electron Apps are fully developed using HTML, JS and CSS. -->
+<!-- This file contains the basic layout of the App in HTML -->
+<head>
+  <title>DeWils YouTube</title>
+  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/animate.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <!-- Page Flexbox Layout -->
+  <div class="vert-container">
+    <div class="ui-container">
+      <h1 class="title">Paste any Youtube.URL</h1>
+      <div class="input-bar">
+        <input type="text" class="input is-medium" placeholder="Link" id="url">
+        <button class="button is-medium is-primary" onclick="addVidButton();">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Playlist Box Overlay -->
+  <div class="message-container">
+    <article class="message hidden">
+      <div class="message-header">
+        <p>Playlist</p>
+        <button class="delete" aria-label="delete" onclick="clearPlaylist();"></button>
+      </div>
+      <div class="message-body">
+        <!-- Preset:
+
+        <div class="video">
+          <img src="https://img.youtube.com/vi/kfFx_VFOP3E/mqdefault.jpg" height="67.5" width="120">
+          <p>Video 1</p>
+        </div>
+
+       -->
+      </div>
+    </article>
+  </div>
+
+</body>
+
+<script src="../js/browse.js"></script>

@@ -1,0 +1,126 @@
+/* -------------------
+      Import things
+   ------------------- */
+
+// Import Charset
+@charset "utf-8";
+
+/* -------------------
+   Customize variables
+   ------------------- */
+
+// General colors
+$darker-gray: #1c1c1c;
+$lighter-gray: #5b5b5b;
+$coral: #df5555;
+$white: #ffffff;
+$black: #000000;
+
+// General object colors
+$primary: $coral;
+$text: $white;
+
+// Settings
+$body-background-color: $darker-gray;
+$body-color: $text;
+$title-color: $text;
+$message-body-padding: 6px;
+
+/* -------------------
+      CSS Settings
+   ------------------- */
+
+// Full size Body for Flex alignments
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+// Full height centered container
+.vert-container {
+  // Flex-item props
+  flex: 0 0;
+  flex-basis: 90vw;
+  // Flex-container props
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 800px) {
+  .vert-container {
+    flex-basis: 60vw;
+  }
+}
+
+// Flex height container for basic search elements
+.ui-container {
+  flex-basis: 20vh;
+  text-align: center;
+}
+
+// Input bar: Long Link input, Small button
+.input-bar {
+  width: 100%;
+  display: flex;
+}
+
+.input-bar input {
+  flex: 1 1;
+}
+
+.input-bar button {
+  flex: 0 0;
+  margin-left: 4px;
+}
+
+// Playlist Bpx
+.message-container {
+  bottom: 1vw;
+  right: 1vw;
+  left: 1vw;
+  width: 96vw;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+}
+
+.message-body {
+  display: flex;
+  padding: 0px;
+}
+
+.video {
+  height: 100px;
+  flex: 0 0 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0px 6px;
+}
+
+.video img {
+  border-radius: 4px;
+}
+
+.video p {
+  color: $darker-gray;
+  flex: 0 0 1.6em;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+/* -------------------
+     Import things
+    that need to be
+     imported later
+   ------------------- */
+
+// Import Bulma after setting everything up
+@import "../node_modules/bulma/bulma";
