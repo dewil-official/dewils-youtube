@@ -35,30 +35,26 @@ body {
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 // Full height centered container
 .vert-container {
   // Flex-item props
   flex: 0 0;
-  flex-basis: 90vw;
+  flex-basis: 60vw;
   // Flex-container props
   display: flex;
+  width: 80vw;
   flex-direction: column;
   justify-content: center;
-}
-
-@media (min-width: 800px) {
-  .vert-container {
-    flex-basis: 60vw;
-  }
 }
 
 // Flex height container for basic search elements
 .ui-container {
   flex-basis: 20vh;
   text-align: center;
+  padding: 8px;
 }
 
 // Input bar: Long Link input, Small button
@@ -78,18 +74,21 @@ body {
 
 // Playlist Bpx
 .message-container {
-  bottom: 1vw;
-  right: 1vw;
-  left: 1vw;
-  width: 96vw;
-  display: flex;
-  position: fixed;
+  flex: 0 0 20vw;
   justify-content: center;
+}
+
+.message {
+  width: 92%;
+  height: 96%;
+  margin: 8px auto 8px 0;
 }
 
 .message-body {
   display: flex;
+  flex-direction: column;
   padding: 0px;
+  overflow:auto;
 }
 
 .video {
@@ -110,10 +109,6 @@ body {
   flex: 0 0 1.6em;
   overflow: hidden;
   font-weight: bold;
-}
-
-.hidden {
-  display: none;
 }
 
 /* -------------------

@@ -1,6 +1,9 @@
 // Import persistant storage
 const Store = require('electron-store');
 const store = new Store();
+var YouTube = require('youtube-node');
+var youTube = new YouTube();
+youTube.setKey('AIzaSyB1OOSpTREs85WUMvIgJvLTZKye4BVsoFU');
 
 // Add current link to the storage
 function addVidButton() {
@@ -52,15 +55,34 @@ function isValidUrl(url) {
 function addToStore(url) {
   // Create a new array to handle the playlists
   // If available, load the currently saved playlist into it
-  let playlist = [];
-  if (store.get('playlist')) playlist = store.get('playlist');
-  // Then, add the new video
-  playlist.push(url);
-  // Aaaand save it!
-  store.set('playlist', playlist);
+
+  youTube.getById(url, function(error, result) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      // Create some variables to work with
+      let vid = {};
+      let answer = JSON.stringify(result, null, 2);
+      let playlist = [];
+      if (store.get('playlist')) playlist = store.get('playlist');
+
+      // Add all properties to the vid-object
+      vid.id = result.items[0].id;
+      vid.title = result.items[0].snippet.title;
+
+      // Then, add the new video
+      playlist.push(vid);
+
+      // Aaaand save it!
+      store.set('playlist', playlist);
+      updatePlaylist();
+    }
+  });
 }
 
 function clearPlaylist() {
+  // Just clear the storage and update();
   store.set('playlist', []);
   updatePlaylist();
 }
@@ -69,27 +91,17 @@ function clearPlaylist() {
 function updatePlaylist() {
   // Variables
   let msg = document.getElementsByClassName('message')[0];
-  let isOpened = true;
-  if (msg.classList.includes('hidden')) isOpened = false;
   let playlist = store.get('playlist');
-
-  // Close it if playlist is empty
-  if (isOpened && playlist == []) {
-    msg.classList.add('hidden');
-  }
-
-  // Open it if not already opened
-  if (!isOpened && playlist !== []) {
-    msg.classList.remove('hidden');
-  }
 
   // Rebuild contents
   let insert = '';
   for (let v of playlist) {
     insert += '<div class="video">';
-    insert += '<img src="https://img.youtube.com/vi/'+v+'/mqdefault.jpg" height="67.5" width="120">';
-    insert += '<p>'+v+'</p>';
+    insert += '<img src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" height="67.5" width="120">';
+    insert += '<p>'+v.title+'</p>';
     insert += '</div>';
   }
-  
+
+  msg.getElementsByClassName('message-body')[0].innerHTML = insert;
+
 }

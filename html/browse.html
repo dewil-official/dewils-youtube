@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body onload="updatePlaylist();">
   <!-- Page Flexbox Layout -->
   <div class="vert-container">
     <div class="ui-container">
@@ -23,10 +23,9 @@
 
   <!-- Playlist Box Overlay -->
   <div class="message-container">
-    <article class="message hidden">
+    <article class="message">
       <div class="message-header">
         <p>Playlist</p>
-        <button class="delete" aria-label="delete" onclick="clearPlaylist();"></button>
       </div>
       <div class="message-body">
         <!-- Preset:
@@ -42,5 +41,6 @@
   </div>
 
 </body>
+
 
 <script src="../js/browse.js"></script>
