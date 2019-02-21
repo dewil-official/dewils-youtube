@@ -34,15 +34,16 @@ $message-body-padding: 6px;
 body {
   height: 100vh;
   width: 100vw;
+  padding: 16px;
   display: flex;
   justify-content: flex-end;
+  overflow: hidden;
 }
 
 // Full height centered container
 .vert-container {
   // Flex-item props
-  flex: 0 0;
-  flex-basis: 60vw;
+  flex: 1 0 60vw;
   // Flex-container props
   display: flex;
   width: 80vw;
@@ -61,10 +62,17 @@ body {
 .input-bar {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .input-bar input {
   flex: 1 1;
+}
+
+@media (min-width: 1000px) {
+  .input-bar input {
+    flex: 0 1 500px;
+  }
 }
 
 .input-bar button {
@@ -81,19 +89,16 @@ body {
 .message {
   width: 92%;
   height: 96%;
-  margin: 8px auto 8px 0;
+  margin: 8px 8px 8px 0;
+  overflow: auto;
 }
 
 .message-body {
-  display: flex;
-  flex-direction: column;
   padding: 0px;
-  overflow:auto;
 }
 
 .video {
   height: 100px;
-  flex: 0 0 120px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -102,6 +107,7 @@ body {
 
 .video img {
   border-radius: 4px;
+  transition: .5s ease;
 }
 
 .video p {
@@ -109,6 +115,33 @@ body {
   flex: 0 0 1.6em;
   overflow: hidden;
   font-weight: bold;
+}
+
+.vid-overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.vid-overlay a {
+  border: 5px solid $primary;
+  border-radius: 4px;
+  color: white;
+  font-size: 8px;
+  padding: 4px;
+}
+
+.vid-container:hover img {
+  opacity: 0.3;
+}
+
+.vid-container:hover .vid-overlay {
+  opacity: 1;
 }
 
 /* -------------------

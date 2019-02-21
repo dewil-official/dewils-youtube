@@ -95,12 +95,15 @@ function updatePlaylist() {
 
   // Rebuild contents
   let insert = '';
-  for (let v of playlist) {
+  playlist.forEach(function (v, v_index) {
     insert += '<div class="video">';
+    insert += '<div class="vid-container">';
     insert += '<img src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" height="67.5" width="120">';
+    insert += '<div class="vid-overlay"><a onclick="removeVid(' + v_index + ')">X</a></div>';
+    insert += '</div>';
     insert += '<p>'+v.title+'</p>';
     insert += '</div>';
-  }
+  });
 
   msg.getElementsByClassName('message-body')[0].innerHTML = insert;
 
