@@ -65,8 +65,7 @@ body {
 
 .video img {
   border-radius: 4px;
-  transition: .5s ease;
-  backface-visibility: hidden; }
+  transition: .5s ease; }
 
 .video p {
   color: #1c1c1c;
